@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DSE_BASE_URL: ${DSE_BASE_URL:-https://www.dse.com.bd}
+      API_KEY: ${API_KEY:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+      UPSTREAM_TIMEOUT_MS: ${UPSTREAM_TIMEOUT_MS:-15000}
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-60}
+      STALE_TTL_SECONDS: ${STALE_TTL_SECONDS:-300}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-120}
+      TRUST_PROXY_HOPS: ${TRUST_PROXY_HOPS:-0}
+    restart: unless-stopped
